@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijus da Ju | Colorindo seu look</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-claro: #87CEFA; 
+            --amarelo: #FFD700; 
+            --preto: #111111;
+            --branco: #FFFFFF;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--azul-claro);
+            color: var(--preto);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: var(--branco);
+            padding: 40px 20px;
+            border-bottom: 4px solid var(--preto);
+        }
+        .logo-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--preto);
+            object-fit: cover;
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin: 15px 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .tagline {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .slogan {
+            font-style: italic;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background-color: var(--branco);
+            border: 3px solid var(--preto);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 8px 8px 0px var(--preto);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px var(--preto);
+        }
+        .card-img {
+            width: 100%;
+            height: 280px;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            border: 2px solid var(--preto);
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin: 10px 0;
+        }
+        .card-desc {
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .card-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--preto);
+        }
+        .btn-comprar {
+            background-color: var(--amarelo);
+            color: var(--preto);
+            border: 3px solid var(--preto);
+            padding: 15px 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            box-shadow: 4px 4px 0px var(--preto);
+            transition: all 0.2s;
+        }
+        .btn-comprar:active {
+            box-shadow: 0px 0px 0px var(--preto);
+            transform: translate(4px, 4px);
+        }
+        footer {
+            background-color: var(--preto);
+            color: var(--branco);
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        .footer-info {
+            margin-bottom: 20px;
+        }
+        .footer-info p {
+            margin: 5px 0;
+        }
+        .pix-box {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 10px;
+            border: 1px dashed var(--amarelo);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.jpg" alt="Logo Bijus da Ju">
+        </div>
+        <h1>Bijus da Ju</h1>
+        <p class="tagline">Colorindo seu look</p>
+        <p class="slogan">"Feitas para brilhar com você. Detalhes que fazem toda a diferença."</p>
+    </header>
+
+    <div class="container">
+        <div class="grid" id="vitrine">
+            <!-- Produtos serão injetados aqui -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-info">
+            <p><strong>📍 Regra de Entrega:</strong> Retirada a combinar.</p>
+            <p><strong>💬 WhatsApp:</strong> (21) 99216-0481</p>
+            <div class="pix-box">
+                <strong>Chave PIX:</strong> (21) 99216-0481
+            </div>
+        </div>
+        <p>&copy; 2026 Bijus da Ju. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const produtos = [
+            { sku: 'PUL-001', nome: 'Pulseira Oceano Profundo', desc: 'Miçangas azuis com detalhes em branco.', preco: '5,00', img: 'img/pulseiras_nauticas.jpg' },
+            { sku: 'PUL-002', nome: 'Pulseira Maré Alternada', desc: 'Padrão intercalado azul e branco.', preco: '5,00', img: 'img/pulseiras_nauticas.jpg' },
+            { sku: 'PUL-003', nome: 'Pulseira Brisa Branca', desc: 'Miçangas brancas com detalhes em azul.', preco: '5,00', img: 'img/pulseiras_nauticas.jpg' },
+            { sku: 'PUL-004', nome: 'Pulseira Margaridas (Rosa)', desc: 'Base rosa translúcida com flores artesanais.', preco: '5,00', img: 'img/pulseiras_margaridas.jpg' },
+            { sku: 'PUL-005', nome: 'Pulseira Margaridas (Azul)', desc: 'Base azul translúcida com flores artesanais.', preco: '5,00', img: 'img/pulseiras_margaridas.jpg' },
+            { sku: 'PUL-006', nome: 'Pulseira Margaridas (Verde)', desc: 'Base verde translúcida com flores artesanais.', preco: '5,00', img: 'img/pulseiras_margaridas.jpg' },
+            { sku: 'COL-001', nome: 'Kit Colar Constelação', desc: 'Mix de choker branca e corrente prateada com estrelas.', preco: '6,00', img: 'img/colar_constelacao.jpg' }
+        ];
+
+        const telefone = "5521992160481";
+        const chavePix = "(21) 99216-0481";
+        const vitrine = document.getElementById('vitrine');
+
+        produtos.forEach(prod => {
+            const mensagem = `Olá! Quero comprar a ${prod.nome} (${prod.sku}) no valor de R$ ${prod.preco}. Vou realizar o pagamento para a chave PIX ${chavePix} e já te envio o comprovante por aqui para combinarmos a retirada!`;
+            const linkWhats = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${prod.img}" alt="${prod.nome}" class="card-img">
+                <h2 class="card-title">${prod.nome}</h2>
+                <p class="card-desc">${prod.desc}</p>
+                <div class="card-price">R$ ${prod.preco}</div>
+                <button class="btn-comprar" onclick="window.open('${linkWhats}', '_blank')">Comprar via WhatsApp</button>
+            `;
+            vitrine.appendChild(card);
+        });
+    </script>
+</body>
+</html>
