@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijus da Ju | Colorindo seu look</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --azul-claro: #87CEEB;
+            --azul-escuro: #1E90FF;
+            --amarelo: #FFD700;
+            --preto: #1a1a1a;
+            --branco: #ffffff;
+            --cinza-claro: #f5f5f5;
+            --cinza-escuro: #333333;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            color: var(--preto);
+            overflow-x: hidden;
+        }
+
+        /* Notificações */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-claro) 100%);
+            color: var(--branco);
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(30, 144, 255, 0.3);
+            opacity: 0;
+            transform: translateX(400px) translateY(-20px);
+            animation: slideIn 0.5s ease-out forwards;
+            z-index: 1000;
+            max-width: 320px;
+            font-weight: 600;
+            border-left: 4px solid var(--amarelo);
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            border-left-color: var(--amarelo);
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+            border-left-color: var(--amarelo);
+        }
+
+        .notification.welcome {
+            background: linear-gradient(135deg, var(--amarelo) 0%, #ffd700 100%);
+            color: var(--preto);
+            border-left-color: var(--azul-escuro);
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        @keyframes slideOut {
+            to {
+                opacity: 0;
+                transform: translateX(400px) translateY(-20px);
+            }
+        }
+
+        .notification.hide {
+            animation: slideOut 0.5s ease-out forwards;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--branco) 0%, #f0f8ff 100%);
+            padding: 20px 0;
+            border-bottom: 3px solid var(--azul-escuro);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .brand-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--preto);
+            letter-spacing: -0.5px;
+        }
+
+        .brand-text p {
+            font-size: 12px;
+            color: var(--azul-escuro);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--azul-claro) 0%, var(--azul-escuro) 100%);
+            border-radius: 25px;
+            color: var(--branco);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.2);
+        }
+
+        .contact-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(30, 144, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-claro) 0%, var(--azul-escuro) 100%);
+            color: var(--branco);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero .tagline {
+            font-style: italic;
+            font-size: 16px;
+            opacity: 0.95;
+            margin-top: 15px;
+        }
+
+        /* Seção de Coleção */
+        .collection-header {
+            background: linear-gradient(135deg, var(--amarelo) 0%, #ffd700 100%);
+            color: var(--preto);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collection-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .collection-header h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .collection-header p {
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        /* Grid de Produtos */
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--branco);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid transparent;
+            animation: slideUp 0.6s ease-out backwards;
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 16px 32px rgba(30, 144, 255, 0.15);
+            border-color: var(--azul-claro);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--azul-claro) 0%, var(--amarelo) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        .product-content {
+            padding: 24px;
+        }
+
+        .product-content h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--preto);
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+        }
+
+        .product-content p {
+            font-size: 14px;
+            color: var(--cinza-escuro);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--azul-escuro);
+            margin-bottom: 15px;
+        }
+
+        .product-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--amarelo) 0%, #ffd700 100%);
+            color: var(--preto);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            border: 2px solid var(--amarelo);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .product-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3);
+            background: var(--preto);
+            color: var(--amarelo);
+            border-color: var(--amarelo);
+        }
+
+        /* Seção de Contato */
+        .contact-section {
+            background: linear-gradient(135deg, var(--preto) 0%, #2a2a2a 100%);
+            color: var(--branco);
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(30, 144, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px solid var(--amarelo);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .contact-box:nth-child(1) { animation-delay: 0.1s; }
+        .contact-box:nth-child(2) { animation-delay: 0.2s; }
+        .contact-box:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-box:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(30, 144, 255, 0.2);
+        }
+
+        .contact-box h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--amarelo);
+            letter-spacing: 0.5px;
+        }
+
+        .contact-box p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-box a {
+            color: var(--amarelo);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+            color: var(--branco);
+        }
+
+        .pix-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--amarelo) 0%, #ffd700 100%);
+            color: var(--preto);
+            padding: 12px 24px;
+            border-radius: 25px;
+            border: none;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .pix-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            color: var(--branco);
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 3px solid var(--amarelo);
+            font-size: 14px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        footer .emoji {
+            font-size: 16px;
+            margin: 0 5px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .collection-header h3 {
+                font-size: 32px;
+            }
+
+            .products-container {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            .header-container {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .contact-header {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animações de entrada */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .product-card {
+            animation: slideUp 0.6s ease-out backwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663644935198/gpRTvt4eybpp86vrAx4TuN/logo_bijus_professional-EeyBoFCow7etJzdrdb48g7.webp" alt="Logo Bijus da Ju" class="logo-img">
+                <div class="brand-text">
+                    <h1>BIJUS DA JU</h1>
+                    <p>COLORINDO SEU LOOK</p>
+                </div>
+            </div>
+            <a href="https://wa.me/5521992160481" class="contact-header">
+                <span>💬</span>
+                <span>(21) 99216-0481</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>👋 Bem-vindo à Bijus da Ju!</h2>
+            <p>Explore nossa coleção exclusiva de bijuterias artesanais</p>
+            <p class="tagline">"Feitas para brilhar com você. Detalhes que fazem toda a diferença."</p>
+        </div>
+    </section>
+
+    <!-- Coleção -->
+    <section class="collection-header">
+        <h3>✨ COLEÇÃO EXCLUSIVA</h3>
+        <p>Cada bijuteria é feita com amor e atenção aos detalhes</p>
+    </section>
+
+    <!-- Produtos -->
+    <section class="products-container">
+        <div class="product-card">
+            <div class="product-image">💍</div>
+            <div class="product-content">
+                <h4>Pulseira Oceano Profundo</h4>
+                <p>Miçangas azuis com detalhes em branco.</p>
+                <div class="product-price">R$ 5,00</div>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Oceano%20Profundo" class="product-button">💬 Comprar via WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">💍</div>
+            <div class="product-content">
+                <h4>Pulseira Maré Alternada</h4>
+                <p>Padrão intercalado azul e branco.</p>
+                <div class="product-price">R$ 5,00</div>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Maré%20Alternada" class="product-button">💬 Comprar via WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">💍</div>
+            <div class="product-content">
+                <h4>Pulseira Brisa Branca</h4>
+                <p>Miçangas brancas com detalhes em azul.</p>
+                <div class="product-price">R$ 5,00</div>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Brisa%20Branca" class="product-button">💬 Comprar via WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">💍</div>
+            <div class="product-content">
+                <h4>Pulseira Margaridas (Rosa)</h4>
+                <p>Base rosa translúcida com flores artesanais.</p>
+                <div class="product-price">R$ 5,00</div>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Margaridas%20Rosa" class="product-button">💬 Comprar via WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">💍</div>
+            <div class="product-content">
+                <h4>Pulseira Margaridas (Azul)</h4>
+                <p>Base azul translúcida com flores artesanais.</p>
+                <div class="product-price">R$ 5,00</div>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Margaridas%20Azul" class="product-button">💬 Comprar via WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">💍</div>
+            <div class="product-content">
+                <h4>Pulseira Margaridas (Verde)</h4>
+                <p>Base verde translúcida com flores artesanais.</p>
+                <div class="product-price">R$ 5,00</div>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Margaridas%20Verde" class="product-button">💬 Comprar via WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">💍</div>
+            <div class="product-content">
+                <h4>Kit Colar Constelação</h4>
+                <p>Mix de choker branca e corrente prateada com estrelas.</p>
+                <div class="product-price">R$ 6,00</div>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20o%20Kit%20Colar%20Constelação" class="product-button">💬 Comprar via WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-box">
+                <h4>📱 WhatsApp</h4>
+                <p>Entre em contato diretamente conosco para tirar dúvidas ou fazer seu pedido.</p>
+                <a href="https://wa.me/5521992160481">(21) 99216-0481</a>
+            </div>
+
+            <div class="contact-box">
+                <h4>💳 Chave PIX</h4>
+                <p>Realize o pagamento via PIX de forma rápida e segura.</p>
+                <p style="margin-top: 10px; font-family: 'Montserrat', sans-serif; font-weight: 700;">(21) 99216-0481</p>
+                <button class="pix-button" onclick="copyPix()">📋 Copiar PIX</button>
+            </div>
+
+            <div class="contact-box">
+                <h4>💬 Processo de Compra</h4>
+                <p>
+                    1. Escolha seu produto<br>
+                    2. Clique em "Comprar via WhatsApp"<br>
+                    3. Realize o pagamento via PIX<br>
+                    4. Envie o comprovante<br>
+                    5. Combine a retirada
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Bijus da Ju</p>
+        <p>Todos os direitos reservados. Feitas com amor para você brilhar. <span class="emoji">✨</span></p>
+    </footer>
+
+    <script>
+        // Notificação de boas-vindas
+        function showNotification(message, type = 'welcome') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.classList.add('hide');
+                setTimeout(() => notification.remove(), 500);
+            }, 4000);
+        }
+
+        // Mostrar notificação de boas-vindas ao carregar
+        window.addEventListener('load', () => {
+            showNotification('👋 Bem-vindo à Bijus da Ju! Explore nossa coleção.', 'welcome');
+        });
+
+        // Copiar PIX
+        function copyPix() {
+            const pixKey = '(21) 99216-0481';
+            navigator.clipboard.writeText(pixKey).then(() => {
+                showNotification('✅ Chave PIX copiada com sucesso!', 'success');
+            }).catch(() => {
+                showNotification('❌ Erro ao copiar PIX. Tente novamente.', 'error');
+            });
+        }
+
+        // Notificação ao clicar em "Comprar via WhatsApp"
+        document.querySelectorAll('.product-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const productName = button.closest('.product-card').querySelector('h4').textContent;
+                showNotification(`📦 Redirecionando para ${productName}...`, 'success');
+            });
+        });
+    </script>
+</body>
+</html>
