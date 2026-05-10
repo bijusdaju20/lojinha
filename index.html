@@ -6,7 +6,7 @@
     <title>Bijus da Ju | Colorindo seu look</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -22,13 +22,19 @@
             --branco: #ffffff;
             --cinza-claro: #f5f5f5;
             --cinza-escuro: #333333;
+            
+            /* Typography Tokens */
+            --font-primary: 'Inter', sans-serif;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-technical: 'JetBrains Mono', monospace;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-primary);
             background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
             color: var(--preto);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* Notificações */
@@ -46,6 +52,7 @@
             animation: slideIn 0.5s ease-out forwards;
             z-index: 1000;
             max-width: 320px;
+            font-family: var(--font-display);
             font-weight: 600;
             border-left: 4px solid var(--amarelo);
         }
@@ -124,18 +131,21 @@
         }
 
         .brand-text h1 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-display);
             font-size: 28px;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--preto);
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
         }
 
         .brand-text p {
-            font-size: 12px;
+            font-family: var(--font-technical);
+            font-size: 11px;
             color: var(--azul-escuro);
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .contact-header {
@@ -146,10 +156,12 @@
             background: linear-gradient(135deg, var(--azul-claro) 0%, var(--azul-escuro) 100%);
             border-radius: 25px;
             color: var(--branco);
-            font-weight: 600;
+            font-family: var(--font-technical);
+            font-weight: 500;
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(30, 144, 255, 0.2);
+            font-size: 14px;
         }
 
         .contact-header:hover {
@@ -162,7 +174,7 @@
             background: url('hero-background.jpg') center/cover no-repeat;
             background-attachment: fixed;
             color: var(--branco);
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -222,33 +234,40 @@
         }
 
         .hero h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 15px;
+            font-family: var(--font-display);
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            letter-spacing: -1px;
+            letter-spacing: -2px;
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 20px;
             margin-bottom: 10px;
             font-weight: 300;
             letter-spacing: 0.5px;
         }
 
         .hero .tagline {
-            font-style: italic;
-            font-size: 16px;
-            opacity: 0.95;
-            margin-top: 15px;
+            font-family: var(--font-technical);
+            font-style: normal;
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 25px;
+            background: rgba(0,0,0,0.2);
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border-left: 3px solid var(--amarelo);
         }
 
         /* Seção de Coleção */
         .collection-header {
             background: linear-gradient(135deg, var(--amarelo) 0%, #ffd700 100%);
             color: var(--preto);
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -271,20 +290,23 @@
         }
 
         .collection-header h3 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-display);
             font-size: 42px;
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 10px;
             position: relative;
             z-index: 1;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
         }
 
         .collection-header p {
-            font-size: 16px;
+            font-family: var(--font-technical);
+            font-size: 14px;
             position: relative;
             z-index: 1;
             font-weight: 500;
+            letter-spacing: 1px;
         }
 
         /* Grid de Produtos */
@@ -307,14 +329,6 @@
             animation: slideUp 0.6s ease-out backwards;
         }
 
-        .product-card:nth-child(1) { animation-delay: 0.1s; }
-        .product-card:nth-child(2) { animation-delay: 0.2s; }
-        .product-card:nth-child(3) { animation-delay: 0.3s; }
-        .product-card:nth-child(4) { animation-delay: 0.4s; }
-        .product-card:nth-child(5) { animation-delay: 0.5s; }
-        .product-card:nth-child(6) { animation-delay: 0.6s; }
-        .product-card:nth-child(7) { animation-delay: 0.7s; }
-
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -335,109 +349,77 @@
         .product-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, var(--azul-claro) 0%, var(--amarelo) 100%);
+            background: linear-gradient(135deg, var(--azul-claro) 0%, var(--azul-escuro) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
-            animation: shimmer 3s infinite;
+            font-size: 64px;
+            color: var(--branco);
         }
 
         .product-content {
-            padding: 24px;
+            padding: 25px;
         }
 
         .product-content h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--preto);
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 600;
             margin-bottom: 10px;
-            letter-spacing: -0.3px;
+            color: var(--preto);
         }
 
         .product-content p {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--cinza-escuro);
-            margin-bottom: 15px;
-            line-height: 1.5;
+            margin-bottom: 20px;
+            font-weight: 400;
         }
 
         .product-price {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-technical);
             font-size: 24px;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--azul-escuro);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .product-price::before {
+            content: 'price:';
+            font-size: 10px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            letter-spacing: 1px;
         }
 
         .product-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--amarelo) 0%, #ffd700 100%);
-            color: var(--preto);
-            padding: 12px 24px;
-            border-radius: 25px;
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: var(--preto);
+            color: var(--branco);
+            text-align: center;
             text-decoration: none;
-            font-weight: 700;
+            border-radius: 8px;
+            font-family: var(--font-technical);
+            font-weight: 500;
             font-size: 14px;
-            border: 2px solid var(--amarelo);
             transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
-            letter-spacing: 0.5px;
+            border: 1px solid transparent;
         }
 
         .product-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3);
-            background: var(--preto);
-            color: var(--amarelo);
-            border-color: var(--amarelo);
+            background: var(--azul-escuro);
+            transform: scale(1.02);
         }
 
-        /* Seção de Contato */
+        /* Contato */
         .contact-section {
-            background: linear-gradient(135deg, var(--preto) 0%, #2a2a2a 100%);
-            color: var(--branco);
-            padding: 60px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: rgba(30, 144, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .contact-section::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 400px;
-            height: 400px;
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite reverse;
+            background: var(--cinza-claro);
+            padding: 80px 20px;
         }
 
         .contact-container {
@@ -446,113 +428,91 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
-            position: relative;
-            z-index: 1;
         }
 
         .contact-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 16px;
-            border: 2px solid var(--amarelo);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out backwards;
-        }
-
-        .contact-box:nth-child(1) { animation-delay: 0.1s; }
-        .contact-box:nth-child(2) { animation-delay: 0.2s; }
-        .contact-box:nth-child(3) { animation-delay: 0.3s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            background: var(--branco);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--azul-escuro);
         }
 
         .contact-box:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(30, 144, 255, 0.2);
+            transform: translateY(-5px);
         }
 
         .contact-box h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--amarelo);
-            letter-spacing: 0.5px;
+            font-family: var(--font-display);
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--preto);
         }
 
         .contact-box p {
-            font-size: 14px;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            color: var(--cinza-escuro);
+            margin-bottom: 15px;
         }
 
         .contact-box a {
-            color: var(--amarelo);
+            font-family: var(--font-technical);
+            color: var(--azul-escuro);
             text-decoration: none;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
             transition: all 0.3s ease;
         }
 
         .contact-box a:hover {
-            text-decoration: underline;
-            color: var(--branco);
+            color: var(--preto);
         }
 
         .pix-button {
             display: inline-block;
-            background: linear-gradient(135deg, var(--amarelo) 0%, #ffd700 100%);
+            background: var(--amarelo);
             color: var(--preto);
             padding: 12px 24px;
-            border-radius: 25px;
+            border-radius: 8px;
             border: none;
+            font-family: var(--font-technical);
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             margin-top: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
-            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .pix-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3);
+            background: var(--preto);
+            color: var(--branco);
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            background: #000;
             color: var(--branco);
             text-align: center;
-            padding: 30px 20px;
-            border-top: 3px solid var(--amarelo);
-            font-size: 14px;
+            padding: 40px 20px;
+            border-top: 1px solid #333;
         }
 
         footer p {
+            font-family: var(--font-technical);
+            font-size: 12px;
             margin-bottom: 10px;
-            opacity: 0.9;
-        }
-
-        footer .emoji {
-            font-size: 16px;
-            margin: 0 5px;
+            opacity: 0.7;
+            letter-spacing: 1px;
         }
 
         /* Responsivo */
         @media (max-width: 768px) {
             .hero h2 {
-                font-size: 36px;
+                font-size: 42px;
             }
 
             .collection-header h3 {
@@ -561,34 +521,7 @@
 
             .products-container {
                 grid-template-columns: 1fr;
-                padding: 40px 20px;
             }
-
-            .header-container {
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-
-            .contact-header {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        /* Animações de entrada */
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .product-card {
-            animation: slideUp 0.6s ease-out backwards;
         }
     </style>
 </head>
@@ -600,11 +533,11 @@
                 <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663644935198/gpRTvt4eybpp86vrAx4TuN/logo_bijus_professional-EeyBoFCow7etJzdrdb48g7.webp" alt="Logo Bijus da Ju" class="logo-img">
                 <div class="brand-text">
                     <h1>BIJUS DA JU</h1>
-                    <p>COLORINDO SEU LOOK</p>
+                    <p>PRECISION & STYLE</p>
                 </div>
             </div>
             <a href="https://wa.me/5521992160481" class="contact-header">
-                <span>💬</span>
+                <span>CONNECT:</span>
                 <span>(21) 99216-0481</span>
             </a>
         </div>
@@ -613,16 +546,16 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h2>👋 Bem-vindo à Bijus da Ju!</h2>
-            <p>Explore nossa coleção exclusiva de bijuterias artesanais</p>
-            <p class="tagline">"Feitas para brilhar com você. Detalhes que fazem toda a diferença."</p>
+            <h2>DESIGN <br>ARTESANAL.</h2>
+            <p>Elevando o seu estilo com precisão e sofisticação.</p>
+            <p class="tagline">v1.0.0 // handmade_jewelry_collection</p>
         </div>
     </section>
 
     <!-- Coleção -->
     <section class="collection-header">
-        <h3>✨ COLEÇÃO EXCLUSIVA</h3>
-        <p>Cada bijuteria é feita com amor e atenção aos detalhes</p>
+        <h3>STYLISH_COLLECTION</h3>
+        <p>Desenvolvido com foco na estética e durabilidade.</p>
     </section>
 
     <!-- Produtos -->
@@ -633,7 +566,7 @@
                 <h4>Pulseira Oceano Profundo</h4>
                 <p>Miçangas azuis com detalhes em branco.</p>
                 <div class="product-price">R$ 5,00</div>
-                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Oceano%20Profundo" class="product-button">💬 Comprar via WhatsApp</a>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Oceano%20Profundo" class="product-button">GET_ITEM</a>
             </div>
         </div>
 
@@ -643,7 +576,7 @@
                 <h4>Pulseira Maré Alternada</h4>
                 <p>Padrão intercalado azul e branco.</p>
                 <div class="product-price">R$ 5,00</div>
-                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Maré%20Alternada" class="product-button">💬 Comprar via WhatsApp</a>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Maré%20Alternada" class="product-button">GET_ITEM</a>
             </div>
         </div>
 
@@ -653,7 +586,7 @@
                 <h4>Pulseira Brisa Branca</h4>
                 <p>Miçangas brancas com detalhes em azul.</p>
                 <div class="product-price">R$ 5,00</div>
-                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Brisa%20Branca" class="product-button">💬 Comprar via WhatsApp</a>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Brisa%20Branca" class="product-button">GET_ITEM</a>
             </div>
         </div>
 
@@ -663,7 +596,7 @@
                 <h4>Pulseira Margaridas (Rosa)</h4>
                 <p>Base rosa translúcida com flores artesanais.</p>
                 <div class="product-price">R$ 5,00</div>
-                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Margaridas%20Rosa" class="product-button">💬 Comprar via WhatsApp</a>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Margaridas%20Rosa" class="product-button">GET_ITEM</a>
             </div>
         </div>
 
@@ -673,7 +606,7 @@
                 <h4>Pulseira Margaridas (Azul)</h4>
                 <p>Base azul translúcida com flores artesanais.</p>
                 <div class="product-price">R$ 5,00</div>
-                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Margaridas%20Azul" class="product-button">💬 Comprar via WhatsApp</a>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Margaridas%20Azul" class="product-button">GET_ITEM</a>
             </div>
         </div>
 
@@ -683,7 +616,7 @@
                 <h4>Pulseira Margaridas (Verde)</h4>
                 <p>Base verde translúcida com flores artesanais.</p>
                 <div class="product-price">R$ 5,00</div>
-                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Margaridas%20Verde" class="product-button">💬 Comprar via WhatsApp</a>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20a%20Pulseira%20Margaridas%20Verde" class="product-button">GET_ITEM</a>
             </div>
         </div>
 
@@ -693,7 +626,7 @@
                 <h4>Kit Colar Constelação</h4>
                 <p>Mix de choker branca e corrente prateada com estrelas.</p>
                 <div class="product-price">R$ 6,00</div>
-                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20o%20Kit%20Colar%20Constelação" class="product-button">💬 Comprar via WhatsApp</a>
+                <a href="https://wa.me/5521992160481?text=Olá!%20Gostaria%20de%20comprar%20o%20Kit%20Colar%20Constelação" class="product-button">GET_ITEM</a>
             </div>
         </div>
     </section>
@@ -702,26 +635,26 @@
     <section class="contact-section">
         <div class="contact-container">
             <div class="contact-box">
-                <h4>📱 WhatsApp</h4>
-                <p>Entre em contato diretamente conosco para tirar dúvidas ou fazer seu pedido.</p>
+                <h4>WHATSAPP</h4>
+                <p>Direct support for orders and inquiries.</p>
                 <a href="https://wa.me/5521992160481">(21) 99216-0481</a>
             </div>
 
             <div class="contact-box">
-                <h4>💳 Chave PIX</h4>
-                <p>Realize o pagamento via PIX de forma rápida e segura.</p>
-                <p style="margin-top: 10px; font-family: 'Montserrat', sans-serif; font-weight: 700;">(21) 99216-0481</p>
-                <button class="pix-button" onclick="copyPix()">📋 Copiar PIX</button>
+                <h4>PIX_PAYMENT</h4>
+                <p>Fast and secure checkout process.</p>
+                <p style="margin-top: 10px; font-family: var(--font-technical); font-weight: 700;">(21) 99216-0481</p>
+                <button class="pix-button" onclick="copyPix()">COPY_KEY</button>
             </div>
 
             <div class="contact-box">
-                <h4>💬 Processo de Compra</h4>
-                <p>
-                    1. Escolha seu produto<br>
-                    2. Clique em "Comprar via WhatsApp"<br>
-                    3. Realize o pagamento via PIX<br>
-                    4. Envie o comprovante<br>
-                    5. Combine a retirada
+                <h4>WORKFLOW</h4>
+                <p style="text-align: left; font-family: var(--font-technical); font-size: 13px;">
+                    01. SELECT_PRODUCT<br>
+                    02. CLICK_GET_ITEM<br>
+                    03. EXECUTE_PAYMENT<br>
+                    04. SEND_RECEIPT<br>
+                    05. CONFIRM_DELIVERY
                 </p>
             </div>
         </div>
@@ -729,8 +662,8 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Bijus da Ju</p>
-        <p>Todos os direitos reservados. Feitas com amor para você brilhar. <span class="emoji">✨</span></p>
+        <p>© 2026 BIJUS_DA_JU // ALL_RIGHTS_RESERVED</p>
+        <p>SYSTEM_STATUS: ONLINE // ENJOY_THE_SHINE</p>
     </footer>
 
     <script>
@@ -749,16 +682,16 @@
 
         // Mostrar notificação de boas-vindas ao carregar
         window.addEventListener('load', () => {
-            showNotification('👋 Bem-vindo à Bijus da Ju! Explore nossa coleção.', 'welcome');
+            showNotification('👋 Welcome to Bijus da Ju System.', 'welcome');
         });
 
         // Copiar PIX
         function copyPix() {
             const pixKey = '(21) 99216-0481';
             navigator.clipboard.writeText(pixKey).then(() => {
-                showNotification('✅ Chave PIX copiada com sucesso!', 'success');
+                showNotification('✅ PIX_KEY_COPIED', 'success');
             }).catch(() => {
-                showNotification('❌ Erro ao copiar PIX. Tente novamente.', 'error');
+                showNotification('❌ ERROR_COPYING', 'error');
             });
         }
 
@@ -766,7 +699,7 @@
         document.querySelectorAll('.product-button').forEach(button => {
             button.addEventListener('click', (e) => {
                 const productName = button.closest('.product-card').querySelector('h4').textContent;
-                showNotification(`📦 Redirecionando para ${productName}...`, 'success');
+                showNotification(`📦 Redirecting to ${productName}...`, 'success');
             });
         });
     </script>
