@@ -18,10 +18,17 @@
             --azul-claro: #87CEEB;
             --azul-escuro: #1E90FF;
             --amarelo: #FFD700;
-            --preto: #000000; /* Cor mais escura */
-            --branco: #ffffff;
-            --cinza-claro: #f5f5f5;
-            --cinza-escuro: #222222; /* Cor mais escura */
+            --preto: #ffffff;
+            --branco: #0a0e27;
+            --cinza-claro: #1a1f3a;
+            --cinza-escuro: #e0e0e0;
+            
+            /* Tema Escuro */
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151b38;
+            --bg-tertiary: #1a1f3a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b8d4;
             
             /* Typography */
             --font-display: 'Space Grotesk', sans-serif;
@@ -31,8 +38,8 @@
 
         body {
             font-family: var(--font-body);
-            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
-            color: var(--preto);
+            background: linear-gradient(135deg, #0a0e27 0%, #151b38 100%);
+            color: var(--text-primary);
             overflow-x: hidden;
         }
 
@@ -91,13 +98,13 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--branco) 0%, #f0f8ff 100%);
+            background: linear-gradient(135deg, #151b38 0%, #0a0e27 100%);
             padding: 20px 0;
             border-bottom: 3px solid var(--azul-escuro);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         .header-container {
@@ -132,14 +139,14 @@
             font-family: var(--font-display);
             font-size: 28px;
             font-weight: 700;
-            color: var(--preto);
+            color: var(--text-primary);
             letter-spacing: -0.5px;
         }
 
         .brand-text p {
             font-family: var(--font-technical);
             font-size: 12px;
-            color: var(--azul-escuro);
+            color: var(--azul-claro);
             font-weight: 600;
             letter-spacing: 1px;
         }
@@ -285,6 +292,7 @@
             position: relative;
             z-index: 1;
             letter-spacing: -0.5px;
+            color: #000000;
         }
 
         .collection-header p {
@@ -293,6 +301,7 @@
             position: relative;
             z-index: 1;
             font-weight: 500;
+            color: #000000;
         }
 
         /* Grid de Produtos */
@@ -306,10 +315,10 @@
         }
 
         .product-card {
-            background: var(--branco);
+            background: var(--bg-secondary);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: 2px solid transparent;
             animation: slideUp 0.6s ease-out backwards;
@@ -360,12 +369,12 @@
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 10px;
-            color: var(--preto);
+            color: var(--text-primary);
         }
 
         .product-content p {
             font-size: 14px;
-            color: var(--cinza-escuro);
+            color: var(--text-secondary);
             margin-bottom: 15px;
         }
 
@@ -397,7 +406,7 @@
 
         /* Seção de Contato */
         .contact-section {
-            background: var(--cinza-claro);
+            background: var(--bg-primary);
             padding: 60px 20px;
         }
 
@@ -410,10 +419,10 @@
         }
 
         .contact-box {
-            background: var(--branco);
+            background: var(--bg-secondary);
             padding: 30px;
             border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             text-align: center;
             transition: transform 0.3s ease;
         }
@@ -426,12 +435,12 @@
             font-family: var(--font-display);
             font-size: 20px;
             margin-bottom: 15px;
-            color: var(--preto);
+            color: var(--text-primary);
         }
 
         .contact-box p {
             font-size: 15px;
-            color: var(--cinza-escuro);
+            color: var(--text-secondary);
             margin-bottom: 10px;
         }
 
